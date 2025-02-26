@@ -1,0 +1,35 @@
+[project]
+name = "blog"
+version = "0.1.0"
+description = "Blog API in FastAPI"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.115.8",
+    "httpx>=0.28.1",
+    "pytest>=8.3.4",
+    "pytest-asyncio>=0.25.3",
+    "pydantic>=2.10.6",
+    "pydantic-settings>=2.8.0",
+    "uvicorn>=0.34.0",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "httpx>=0.28.1",
+    "mypy>=1.15.0",
+    "pre-commit>=4.1.0",
+    "pytest>=8.3.4",
+    "pytest-asyncio>=0.25.3",
+    "ruff>=0.9.5",
+    "taskipy>=1.14.1",
+    "pytest-cov>=6.0.0",
+]
+
+[tool.taskipy.tasks]
+test = "pytest tests/ -v"
+lint = "ruff check ."
+format = "ruff format ."
+
+[tool.pytest.ini_options]
+asyncio_default_fixture_loop_scope = "function"
